@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- ------------------------------------------------------- -->
+    <style media="screen">
+      table {
+        border-collapse: collapse;
+      }
+      th {
+        border: 1px solid gray;
+        width: 200px;
+        background-color: #DDDDFF;
+      }
+      td {
+        border: 1px solid gray;
+      }
+    </style>
+    <!-- ------------------------------------------------------- -->
+    <script type="text/javascript">
+      //------------------------------------------------------------
+      function gid(id) {
+        return document.getElementById(id);
+      }
+      function gqs(selector) {
+        return document.querySelector(selector);
+      }
+      function appendRow(newWord) {
+        let mytbody = gid("myTBody");
+        //새로운 행을 하나 생성한다.
+        let newRow = mytbody.insertRow(mytbody.rows.length);
+        //만든 새 행을 이용하여 새 행에 포함시킬 셀을 두 개 생성한다.
+        let cell0 = newRow.insertCell(0);
+        let cell1 = newRow.insertCell(1);
+        cell0.innerHTML = `<b>${newWord}</b>`;
+        cell1.innerHTML = newWord.length;
+        cell0.addEventListener("click", insertFront);
+        cell1.addEventListener("click", killRow);
+      }
+      //------------------------------------------------------------
+      function insertFront() {
+        let input = gid("textinput");
+        input.focus();
+        if(input.value.length <= 0)
+          return false;
+
+        let rowIndex = this.parentNode.rowIndex - 1;
+        let newRow = gid("myTBody").insertRow(rowIndex);
+        let cell0 = newRow.insertCell(0);
+        let cell1 = newRow.insertCell(1);
+        cell0.innerHTML = `<b>${input.value}</b>`;
+        cell1.innerHTML = input.value.length;
+        input.value = "";
+        cell0.addEventListener("click", insertFront);
+        cell1.addEventListener("click", killRow);
+
+      }
+      function killRow() {
+        let rowIndex = this.parentNode.rowIndex;
+        gid("myTBody").deleteRow(rowIndex - 1);
+      }
+      function keyDownHandler(){
+        if(event.keyCode == 13) {
+          if(gid("textinput").value.length > 0) {
+            appendRow(gid("textinput").value);
+            gid("textinput").value = "";
+          }
+        }
+
+      }
+      //------------------------------------------------------------
+      window.onload = function() {
+        gid("textinput").addEventListener("keydown", keyDownHandler);
+        gid("textinput").focus();
+      }
+      //------------------------------------------------------------
+      //------------------------------------------------------------
+    </script>
+    <!-- ------------------------------------------------------- -->
+  </head>
+  <body>
+    <h1>Text Input & Table Control</h1>
+    <hr>
+    Input: <input id="textinput" size=30>
+    <p></p>
+    <hr>
+    <table>
+      <thead>
+        <th>단어</th>
+        <th>비고</th>
+      </thead>
+      <tbody id="myTBody">
+      </tbody>
+    </table>
+  </body>
+
+
+
+
+
+
+</html>

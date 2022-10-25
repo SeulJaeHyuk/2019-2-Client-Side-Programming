@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Client Side Programming</h1>
+    <hr>
+    <h2>반복문 과제1(홀짝 분류)</h2>
+    <hr>
+  </body>
+  <script type="text/javascript">
+    var a = [23,5,456,675,86,45,457,876,345,575];
+    var odd = [];     //홀수 저장용 배열
+    var even = [];    //짝수 저장용 배열
+    var item;
+
+    while(a.length > 0){
+      item = a.shift();
+      if(item%2 > 0)
+        odd.push(item);
+      else {
+        even.push(item);
+      }
+    }
+    console.log(`a = [${a}]`);
+    console.log(`odd = [${odd}]`);
+    console.log(`even = [${even}]`);
+
+  </script>
+
+
+
+
+
+
+
+
+
+</html>

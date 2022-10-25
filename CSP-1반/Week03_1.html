@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      h3 {
+        color: green;
+      }
+    </style>
+  </head>
+  <!-- HTML Comment -->
+
+  <body>
+    <h1>Client Side Programming-1반</h1>
+  </body>
+  <script type="text/javascript">
+    //Javascrit Comment
+    //배열 선언
+    let a = ["apple", "mango", "banana", "kiwi", "lemon"];
+
+    //for 반복문으로 과일 이름 하나씩 차례로 출력하기
+    for(let i=0; i<a.length; i++) {
+      // console.log(a[i]);
+      // console.log("a[" + i + "] = " + a[i]);
+      // console.log(`T: a[${i}] = ${a[i]}`);
+      document.write(`<h3>a[${i}] = ${a[i]}</h3>`);
+    }
+  </script>
+</html>

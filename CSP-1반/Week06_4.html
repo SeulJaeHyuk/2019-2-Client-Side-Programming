@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>자바스크립트 생성자 함수 연습</h1>
+    <hr>
+    생성자 함수를 정의하고 이를 이용하여 객체(instance)를 생성하는 연습
+    <hr>
+  </body>
+  <script type="text/javascript">
+    //객체 생성자 함수(Product()) 정의
+    function Product(name, price) {
+      // 생성자 함수가 호출되면 빈 객체({ })가 생성되어 this에 binding 된다.
+      // 빈 객체에 새 속성, 새 메소드 등을 추가하는 개념으로 정의
+      this.name = name;
+      this.price = price;
+      this.intro = function() {
+        document.write(`제품 [${this.name}]의 가격은 ${this.price}원이고 색상은 ${this.color}입니다.<br>`);
+      }; // end of method (intro())
+    } // end of Product()
+    //--------------------------------------------------------------
+    let car = new Product("Sonata", 20000000);
+    car.intro();
+    car.color = "blue";
+    car.intro();
+
+    let pc = new Product("LG gram", 10000);
+    pc.intro();
+    pc.memory = "16GB";
+    //--------------------------------------------------------------
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+</html>

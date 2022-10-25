@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="jquery-3.4.1.min.js" charset="utf-8"></script> -->
+    <script type="text/javascript">
+      $(document).ready(function(){
+        //-------------------------------------
+        $("#btnHide").click(function(){
+          $("p").slideUp();
+        });
+        //-------------------------------------
+        $("#btnShow").click(function(){
+          $("p").slideDown();
+        });
+        //-------------------------------------
+        $("#btnToggle").click(function(){
+          $("p").slideToggle();
+        });
+        //-------------------------------------
+        $("p").click(function(){
+          $(this).slideUp();
+        });
+        //-------------------------------------
+      });
+    </script>
+  </head>
+  <body>
+    <h1>jQuery Coding Test</h1>
+    <hr>
+    <button id="btnHide">Hide</button>
+    <button id="btnShow">Show</button>
+    <button id="btnToggle">Toggle</button>
+    <hr>
+    <p>동의과학대학교</p>
+    <p>컴퓨터정보과</p>
+    <p>허봉식</p>
+
+
+
+
+  </body>
+</html>

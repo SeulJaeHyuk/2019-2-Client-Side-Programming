@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- ========================================================= -->
+    <style media="screen">
+      .pgm {
+        color: red;
+      }
+      .thm {
+        color: green;
+      }
+      li {
+        width: 200px;
+        margin-bottom: 5px;
+        padding-bottom: 3px;
+      }
+    </style>
+    <!-- ========================================================= -->
+    <script type="text/javascript">
+      window.onload = function() {
+          //1. class 속성값이 "pgm"인 객체들을 모두 가져온다.
+          let pgmList = document.getElementsByClassName("pgm");
+          //2. pgmList에 있는 객체마다 속성 color 값을 'orange'로 변경한다.
+          for(let item of pgmList) {
+            item.style.color = "orange";
+          }
+          //-------------------------------------------------
+          // li중에서 pgm class 항목들만 테두리를 설정한다.
+          let pgmLi = document.querySelectorAll("li.pgm");
+          for(let item of pgmLi) {
+            item.style.border = "1px solid gray";
+          }
+
+
+
+      }
+    </script>
+    <!-- ========================================================= -->
+  </head>
+  <body>
+    <h1>DOM Coding Test</h1>
+    <hr>
+    <h2>1학년1반 공통 수강 과목 목록</h2>
+    과목 구분: [<span class="pgm">프로그래밍 과목</span>] [<span class="thm">이론 과목</span>]
+    <ul>
+      <li class="pgm">Javascript</li>
+      <li class="thm">데이터베이스</li>
+      <li class="pgm">Java</li>
+      <li class="pgm">오픈소스소프트웨어실습</li>
+    </ul>
+  </body>
+
+
+
+
+
+
+</html>

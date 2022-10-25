@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      //---------------------------------------------------------------------
+      function clickHandler() {
+        this.innerHTML = (this.innerHTML == '컴퓨터정보과')? "동의과학대학교" : "컴퓨터정보과";
+      }
+      function mouseoverHandler() {
+        this.style.color = "blue";
+      }
+      function mouseoverHandler2() {
+        this.style.backgroundColor = "yellow";
+      }
+      function mouseoutHandler() {
+        this.style.color = "black";
+      }
+      //---------------------------------------------------------------------
+      //---------------------------------------------------------------------
+      window.onload = function() {
+        let uname = document.getElementById("uname");
+        uname.addEventListener("click", clickHandler);
+        uname.addEventListener("mouseover", mouseoverHandler);
+        uname.addEventListener("mouseover", mouseoverHandler2);
+        uname.addEventListener("mouseout", mouseoutHandler);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>표준 이벤트 모델 연습</h1>
+    <hr>
+    <p id="uname">동의과학대학교</p>
+  </body>
+
+
+
+
+
+
+</html>

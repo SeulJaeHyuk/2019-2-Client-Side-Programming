@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- -------------------------------------------------------- -->
+    <style media="screen">
+      div {
+        border: 1px solid black;
+        padding: 20px;
+        width: 50%;
+        background-color: white;
+      }
+    </style>
+    <!-- -------------------------------------------------------- -->
+    <script type="text/javascript">
+      //------------------------------------------------------------
+      // 본문의 <p></p> 내에 메시지를 출력한다.
+      function putMsg(msg) {
+        let p = document.querySelector('p');
+        p.innerHTML += msg + "<br>";
+      }
+      //------------------------------------------------------------
+      function clearP() {
+        document.querySelector("p").innerHTML = "";
+      }
+      function mouseEnter() {
+        this.style.borderColor = 'blue';
+        putMsg("Mouse entered " + this.id);
+      }
+      function mouseLeave() {
+        this.style.borderColor = 'black';
+        putMsg("Mouse left " + this.id);
+      }
+      function mouseOver(ev) {
+        this.style.backgroundColor = "#FFFFAA";
+        putMsg("Mouse Over " + this.id);
+        ev.stopPropagation()
+      }
+      function mouseOut(ev) {
+        this.style.backgroundColor = "#FFFFFF";
+        putMsg("Mouse Out " + this.id);
+        ev.stopPropagation();
+      }
+      function mouseClick(ev) {
+        putMsg("You clicked " + this.id);
+        ev.stopPropagation();
+      }
+      //------------------------------------------------------------
+      window.onload = function() {
+        let divArray = document.getElementsByTagName('div');
+        // 배열에 담긴 div 객체를 하나씩 꺼내 이벤트핸들러를 연결해준다.
+        for(let aDiv of divArray) {
+          aDiv.addEventListener("mouseenter", mouseEnter);
+          aDiv.addEventListener("mouseleave", mouseLeave);
+          aDiv.addEventListener("mouseover", mouseOver);
+          aDiv.addEventListener("mouseout", mouseOut);
+          aDiv.addEventListener("click", mouseClick);
+
+        }
+
+        document.querySelector("body").addEventListener("keydown", clearP);
+      }
+      //------------------------------------------------------------
+    </script>
+    <!-- -------------------------------------------------------- -->
+  </head>
+  <body>
+    <h1>Mouse Event Coding</h1>
+    <hr>
+    <div id="divA">
+      Div A
+      <div id="divB">
+        Div B
+        <div id="divC">
+          Div C
+        </div>
+      </div>
+    </div>
+    <!-- 메시지 출력용 태그-->
+    <p></p>
+  </body>
+
+
+
+
+
+
+
+</html>

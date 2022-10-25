@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- ------------------------------------------------------- -->
+    <style media="screen">
+      div {
+        border: 1px solid blue;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100px;
+        left: 300px; /* x축 좌표값 */
+        top: 300px; /* y축 좌표값 */
+        position: absolute;
+      }
+    </style>
+    <!-- ------------------------------------------------------- -->
+    <script type="text/javascript">
+      //-----------------------------------------------------------
+      let divLeft = 0;
+      let divTop = 300;
+      let keyDiv = null;
+      //-----------------------------------------------------------
+      function gqs(selector) {
+        return document.querySelector(selector);
+      }
+      //-----------------------------------------------------------
+      function moveTo(left, top) {
+        let aDiv = gqs("div");
+        aDiv.style.left = left + 'px';
+        aDiv.style.top = top + 'px';
+        aDiv.innerHTML = `(${left}, ${top})`;
+      }
+      function directMoveRight() {
+        //div 객체의 현재 위치(left)값을 확인한다.
+        let newLeft = parseInt(gqs("div").style.left) + 10;
+        moveTo(newLeft, parseInt(gqs("div").style.top));
+      }
+      function directMoveLeft() {
+        let newLeft = parseInt(gqs("div").style.left) - 10;
+        moveTo(newLeft, parseInt(gqs("div").style.top));
+      }
+
+
+
+      function moveRight() {
+        divLeft += 10;
+        moveTo(divLeft, divTop);
+      }
+      function stopMoving() {
+        clearInterval(keyDiv);
+        keyDiv = null;
+        this.innerHTML = "Go";
+        this.onclick = continueMoving;
+      }
+      function continueMoving() {
+        if(keyDiv == null) {
+          keyDiv = setInterval(moveRight, 500);
+          this.innerHTML = "Stop";
+          this.onclick = stopMoving;
+        }
+
+      }
+      //-----------------------------------------------------------
+      window.onload = function() {
+        moveTo(divLeft, divTop);
+        keyDiv = setInterval(moveRight, 500);
+        document.getElementById("btnStop").onclick = stopMoving;
+        document.getElementById("btnRight").addEventListener("click", directMoveRight);
+        document.getElementById("btnLeft").addEventListener("click", directMoveLeft);
+      }
+      //-----------------------------------------------------------
+    </script>
+    <!-- ------------------------------------------------------- -->
+    <!-- ------------------------------------------------------- -->
+  </head>
+  <body>
+    <h1>Div Moving Control</h1>
+    <hr>
+    <button type="button" id="btnLeft">Left</button>
+    <button type="button" id="btnRight">Right</button>
+    <button type="button" id="btnStop">Stop</button>
+    <hr>
+    <div>javascript</div>
+  </body>
+</html>

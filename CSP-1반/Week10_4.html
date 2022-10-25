@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>DOM(Document Object Model)</title>
+    <script>
+      //-----------------------------------------------------------------
+      function h1StyleSetting() {
+        let h1Array = document.getElementsByTagName("h1");
+        //배열 h1Array에 저장된 h1객체들을 하나씩 꺼내 필요한 처리를 한다.
+        for(let h1 of h1Array) {
+          h1.style.backgroundColor = "blue";
+          h1.style.color = "orange";
+        }
+      }
+      //-----------------------------------------------------------------
+      window.onload = h1StyleSetting;
+    </script>
+  </head>
+  <body>
+    <h1 id="uname1">Document Object Model</h1>
+    <h1 id="uname">동의과학대학교</h1>
+    <h1 id="uname3">컴퓨터정보과</h1>
+  </body>
+
+
+
+
+</html>

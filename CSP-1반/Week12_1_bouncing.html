@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- ------------------------------------------------------- -->
+    <style media="screen">
+      div {
+        border: 1px solid blue;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100px;
+        left: 300px; /* x축 좌표값 */
+        top: 300px; /* y축 좌표값 */
+        position: absolute;
+        border-radius: 50px;
+      }
+    </style>
+    <!-- ------------------------------------------------------- -->
+    <script type="text/javascript">
+      //-----------------------------------------------------------
+      let divLeft = 0;
+      let divTop = 300;
+      let keyDiv = null;
+      let moveAmount = 10; //오른쪽으로 10픽셀씩 이동 설정.
+      //-----------------------------------------------------------
+      function showWindowSize() {
+        document.querySelector("p").innerHTML = `(${window.innerWidth} x ${window.innerHeight})`;
+      }
+      function moveTo(left, top) {
+        let aDiv = document.querySelector("div");
+        aDiv.style.left = left + 'px';
+        aDiv.style.top = top + 'px';
+        aDiv.innerHTML = `(${left}, ${top})`;
+      }
+      function moveRight() {
+        //오른쪽 벽 충돌여부 확인
+        if((divLeft+100) >= window.innerWidth)
+          moveAmount = -10; //이동 방향을 반대로(왼쪽으로) 변경한다.
+        //왼쪽 벽 충돌여부 확인
+        if(divLeft <= 0)
+          moveAmount = 10;
+
+        divLeft += moveAmount;
+        moveTo(divLeft, divTop);
+      }
+      function stopMoving() {
+        clearInterval(keyDiv);
+        keyDiv = null;
+      }
+      function continueMoving() {
+        if(keyDiv == null)
+          keyDiv = setInterval(moveRight, 50);
+      }
+      //-----------------------------------------------------------
+      window.onload = function() {
+        moveTo(divLeft, divTop);
+        keyDiv = setInterval(moveRight, 50);
+        document.getElementById("btnStop").addEventListener("click", stopMoving);
+        document.getElementById("btnGo").addEventListener("click", continueMoving);
+        showWindowSize();
+        window.onresize = showWindowSize;
+      }
+      //-----------------------------------------------------------
+    </script>
+    <!-- ------------------------------------------------------- -->
+    <!-- ------------------------------------------------------- -->
+  </head>
+  <body>
+    <h1>Div Moving Control</h1>
+    <p></p>
+    <hr>
+    <button type="button" id="btnLeft">Left</button>
+    <button type="button" id="btnRight">Right</button>
+    <button type="button" id="btnStop">Stop</button>
+    <button type="button" id="btnGo">Go</button>
+    <hr>
+    <div>javascript</div>
+  </body>
+</html>

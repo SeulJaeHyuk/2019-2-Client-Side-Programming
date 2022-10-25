@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- ------------------------------------------------------- -->
+    <style media="screen">
+      table {
+        border-collapse: collapse;
+      }
+      th {
+        border: 1px solid gray;
+        width: 200px;
+        background-color: #DDDDFF;
+      }
+    </style>
+    <!-- ------------------------------------------------------- -->
+    <script type="text/javascript">
+      //------------------------------------------------------------
+      function gid(id) {
+        return document.getElementById(id);
+      }
+      function gqs(selector) {
+        return document.querySelector(selector);
+      }
+      //------------------------------------------------------------
+      function keyDownHandler(){
+        if(event.keyCode == 13) {
+          if(gid("textinput").value.length > 0) {
+            gqs("p").innerHTML += gid("textinput").value + ", ";
+            gid("textinput").value = "";            
+          }
+        }
+
+      }
+      //------------------------------------------------------------
+      window.onload = function() {
+        gid("textinput").addEventListener("keydown", keyDownHandler);
+        gid("textinput").focus();
+      }
+      //------------------------------------------------------------
+      //------------------------------------------------------------
+    </script>
+    <!-- ------------------------------------------------------- -->
+  </head>
+  <body>
+    <h1>Text Input & Table Control</h1>
+    <hr>
+    Input: <input id="textinput" size=30>
+    <p></p>
+    <hr>
+    <table>
+      <thead>
+        <th>단어</th>
+        <th>비고</th>
+      </thead>
+      <tbody id="myTBody">
+
+      </tbody>
+    </table>
+  </body>
+
+
+
+
+
+
+</html>

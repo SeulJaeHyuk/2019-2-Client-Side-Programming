@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Function</h1>
+    <hr>
+    현재 시간: <span id=time>여기에 시간 표시 예정</span>
+  </body>
+  <script type="text/javascript">
+    //---------------------------------------------------------
+    var key; // setInterval()이 반환하는 키값 저장용
+    //---------------------------------------------------------
+    function showTime() {
+      let now = new Date(); //시스템 현재 시간을 읽어온다.
+      let span = document.getElementById("time");
+      span.innerHTML = now;
+    }
+    //---------------------------------------------------------
+    function doubleX (n = 0) {
+      return 2*n;
+    }
+    //---------------------------------------------------------
+    function max(a = 0, b = 100) {
+      return (a>b)? a: b;
+    }
+    //---------------------------------------------------------
+    function helloMaker(host) {
+      let sayHello = function(target) {
+        return `안녕하세요~${target}씨! 저는 ${host}입니다.`;
+      }
+      return sayHello;
+    }
+    //---------------------------------------------------------
+    function boom() {
+      console.log("Booooooom~~~!!");
+    }
+    //---------------------------------------------------------
+    function stopShowTime() {
+      clearInterval(key);
+      let span = document.getElementById("time");
+      span.innerHTML = "시간 표시 중지됨";
+    }
+    //---------------------------------------------------------
+    key = setInterval(showTime, 1000);
+    setTimeout(stopShowTime, 10000);
+    //---------------------------------------------------------
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

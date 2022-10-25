@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- ========================================================= -->
+    <style media="screen">
+      .pgm {
+        color: red;
+      }
+      .thm {
+        color: green;
+      }
+      li {
+        border: 1px solid gray;
+        width: 200px;
+        margin-bottom: 5px;
+        padding-bottom: 3px;
+        border-radius: 3px;
+      }
+    </style>
+    <!-- ========================================================= -->
+    <script type="text/javascript">
+      window.onload = function() {
+        let aUL = document.getElementById("topicList");
+        aUL.innerHTML += "<li>A</li><li>B</li>";
+      }
+    </script>
+    <!-- ========================================================= -->
+  </head>
+  <body>
+    <h1>DOM Coding Test</h1>
+    <hr>
+    <h2>1학년1반 공통 수강 과목 목록</h2>
+    과목 구분: [<span class="pgm">프로그래밍 과목</span>] [<span class="thm">이론 과목</span>]
+    <ul id="topicList">
+      <li class="pgm">Javascript</li>
+      <li class="thm">데이터베이스</li>
+      <li class="pgm">Java</li>
+      <li class="pgm">오픈소스소프트웨어실습</li>
+    </ul>
+  </body>
+
+
+
+
+
+
+</html>

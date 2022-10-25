@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Javascript Object 연습</h1>
+    <hr>
+    <h2>반복문을 이용하여 객체의 속성-속성값 목록을 출력하기</h2>
+    <hr>
+  </body>
+  <script type="text/javascript">
+  let st = {
+    name: "홍길동",
+     age: 20,
+    code: 201912345,
+    dept: "컴퓨터정보과"
+  };
+  //반복문(for-in)을 이용하여 객체의 속성들을 차례대로 처리.
+  var n = 1;
+  for(let property in console)
+    document.write(`[${n++}] console.<b>${property}</b> = ${console[property]}<br>`);
+
+
+  </script>
+
+
+
+
+
+
+</html>

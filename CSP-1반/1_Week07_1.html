@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>생성자 함수 prototype 연습</h1>
+    <hr>
+  </body>
+  <script type="text/javascript">
+      //##################################################################
+      // 생성자 함수 Product()는 속성 중심으로만 정의
+      function Product(name, price, color='black') {
+        this.name = name;
+        this.price = price;
+        this.color = color;
+      }
+      //------------------------------------------------------------------
+      // 생성자 함수 Product의 속성 prototype에 공유정보(메소드 등) 정의
+      Product.prototype.print = function() {
+        document.write(`<span style="color:${this.color};">제품 [${this.name}]: ${this.price}원</span> <br>`);
+      }
+      Product.prototype.changeColor = function(newColor) {
+        this.color = newColor;
+      }
+      //##################################################################
+      // Product()의 instance들을 담아서 관리할 수 있는 객체 Container 정의
+      function Container(label) {
+        this.label = label;
+        this.container = []; //초기에는 비어 있음.
+      }
+      Container.prototype.put = function(aProduct) {
+        this.container.push(aProduct);
+      }
+      Container.prototype.showList = function() {
+        let itemNo = 0;
+        document.write(`<h2>Container:[${this.label}]</h2>Total ${this.container.length} items.<hr>`);
+        for(let item of this.container) {
+          document.write(`[${itemNo++}] `);
+          item.print();
+        }
+      }
+      //------------------------------------------------------------------
+      //##################################################################
+      // product instance들을 담아 둘 container 를 생성.
+      let ct = new Container('잡동사니');
+
+      // product instance들을 생성
+      let pd1 = new Product('볼펜', 1000, 'red');
+      let pd2 = new Product('만년필', 20000);
+      let car = new Product('BMW', 30000, 'blue');
+      let noteBook = new Product('LG gram', 40000, 'orange');
+
+      // 생성된 product instance들을 container에 수납.
+      ct.put(pd1);
+      ct.put(pd2);
+      ct.put(car);
+      ct.put(noteBook);
+
+      ct.showList();
+
+
+  </script>
+
+
+
+
+
+
+
+
+
+</html>
